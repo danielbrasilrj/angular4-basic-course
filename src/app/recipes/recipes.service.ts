@@ -10,18 +10,20 @@ export class RecipesService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
-    new Recipe('Beans Soup',
-      'A swift soup',
-      'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-04.jpg',
-      [
-        new Ingredient('Beans', 1), new Ingredient('Carriot', 2), new Ingredient('Meat', 3)
-      ]),
-    new Recipe('Chicken Soup',
-      'A spicy soup',
-      'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-09.jpg',
-      [
-        new Ingredient('Chicken', 1), new Ingredient('Spice', 3)
-      ])
+    new Recipe(1,
+               'Beans Soup',
+               'A swift soup',
+               'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-04.jpg',
+               [
+                 new Ingredient('Beans', 1), new Ingredient('Carriot', 2), new Ingredient('Meat', 3)
+               ]),
+    new Recipe(2,
+               'Chicken Soup',
+               'A spicy soup',
+               'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-09.jpg',
+               [
+                 new Ingredient('Chicken', 1), new Ingredient('Spice', 3)
+               ])
   ];
 
   constructor(private shoppingListService: ShoppingListService) {}
@@ -33,5 +35,9 @@ export class RecipesService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  getRecipe(id: number) {
+    return this.recipes.find(recipe => recipe.id == id);
   }
 }
