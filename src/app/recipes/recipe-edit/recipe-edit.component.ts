@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RecipesService} from '../recipes.service';
 import {Recipe} from '../recipe.model';
+import {Ingredient} from '../../shared/ingredient.model';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
 
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  subscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipesService) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private recipeService: RecipesService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -25,6 +30,18 @@ export class RecipeEditComponent implements OnInit {
         this.initForm();
       }
     );
+
+    this.subscription = this.recipeService.recipeChanged.subscribe(
+      (value: boolean) => {
+        if (value) {
+          this.initForm();
+        }
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   private initForm() {
@@ -67,6 +84,7 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
     }
+    this.onCancel();
   }
 
   onAddIngredient() {
@@ -76,5 +94,15 @@ export class RecipeEditComponent implements OnInit {
         'amount': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
       })
     );
+  }
+
+  onDeleteIngredient(index: number) {
+    this.recipeService.removeIngredientToRecipe(this.recipeForm.value.id, index);
+    // simplest solution
+    //(<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 }

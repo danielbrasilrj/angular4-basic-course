@@ -10,6 +10,7 @@ export class RecipesService {
 
   private incrementId: number = 0;
   recipesChanged = new Subject<Recipe[]>();
+  recipeChanged = new Subject<boolean>();
 
   private recipes: Recipe[] = [
     new Recipe(++this.incrementId,
@@ -35,10 +36,6 @@ export class RecipesService {
     return this.recipes.slice();
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
-  }
-
   getRecipe(id: number) {
     return this.recipes.find(recipe => recipe.id == id);
   }
@@ -61,6 +58,18 @@ export class RecipesService {
     if (index > -1) {
       this.recipes.splice(index, 1);
       this.recipesChanged.next(this.getRecipes());
+    }
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredients(ingredients);
+  }
+
+  removeIngredientToRecipe(idRecipe: number, indexofIngredient: number) {
+    let recipe = this.getRecipe(idRecipe);
+    if (indexofIngredient > -1) {
+      recipe.ingredients.splice(indexofIngredient, 1);
+      this.recipeChanged.next(true);
     }
   }
 }
