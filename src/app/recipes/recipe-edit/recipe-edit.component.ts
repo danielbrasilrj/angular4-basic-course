@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {RecipesService} from '../recipes.service';
+import {RecipeService} from '../recipe.service';
 import {Recipe} from '../recipe.model';
 import {Ingredient} from '../../shared/ingredient.model';
 import {Subscription} from 'rxjs/Subscription';
@@ -20,7 +20,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private recipeService: RecipesService) { }
+              private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.route.params.subscribe(

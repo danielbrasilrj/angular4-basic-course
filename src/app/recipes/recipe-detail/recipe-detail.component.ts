@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Recipe} from "../recipe.model";
-import {RecipesService} from "../recipes.service";
+import {RecipeService} from "../recipe.service";
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class RecipeDetailComponent implements OnInit {
 
   recipe: Recipe;
 
-  constructor(private recipesService: RecipesService,
+  constructor(private recipesService: RecipeService,
               private route: ActivatedRoute,
               private router: Router) { }
 

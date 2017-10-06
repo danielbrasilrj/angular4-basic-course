@@ -14,9 +14,9 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import {AppRoutingModule} from './app-routing.module';
-import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
+import { RecipesStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import {RecipesService} from './recipes/recipes.service';
+import {RecipeService} from './recipes/recipe.service';
 import {DataStorageService} from './shared/data-storage.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -48,7 +48,7 @@ import { PageNotFoundComponent } from './auth/page-not-found/page-not-found.comp
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService, RecipesService, DataStorageService, AuthService, AuthGuard],
+  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

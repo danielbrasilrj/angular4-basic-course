@@ -6,7 +6,7 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()
-export class RecipesService {
+export class RecipeService {
 
   private incrementId: number = 0;
   recipesChanged = new Subject<Recipe[]>();
