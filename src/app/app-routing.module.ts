@@ -9,9 +9,11 @@ import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {AuthGuard} from './auth/auth-guard.service';
+import {PageNotFoundComponent} from './auth/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'recipes', component: RecipesComponent, children: [
     { path: '', component: RecipesStartComponent },
     // the path new needs to declare before the path :id
