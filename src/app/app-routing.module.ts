@@ -14,13 +14,6 @@ import {PageNotFoundComponent} from './auth/page-not-found/page-not-found.compon
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
   { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: 'recipes', component: RecipesComponent, children: [
-    { path: '', component: RecipesStartComponent },
-    // the path new needs to declare before the path :id
-    { path: 'new', component: RecipeEditComponent, canActivate: [AuthGuard] },
-    { path: ':id', component: RecipeDetailComponent },
-    { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGuard] }
-  ] },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent }
