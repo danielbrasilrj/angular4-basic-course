@@ -5,8 +5,6 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
-import {ShoppingListComponent} from './shopping-list/shopping-list.component';
-import {ShoppingEditComponent} from './shopping-list/shopping-edit/shopping-edit.component';
 import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import {AppRoutingModule} from './app-routing.module';
 import {RecipeService} from './recipes/recipe.service';
@@ -18,13 +16,12 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {PageNotFoundComponent} from './auth/page-not-found/page-not-found.component';
 import {RecipesModule} from './recipes/recipes.module';
 import {SharedModule} from './shared/shared.module';
+import {ShoppingModule} from './shopping-list/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     SignupComponent,
     SigninComponent,
     PageNotFoundComponent
@@ -37,6 +34,7 @@ import {SharedModule} from './shared/shared.module';
     HttpModule,
     AppRoutingModule,
     RecipesModule,
+    ShoppingModule,
     SharedModule
   ],
   // the RecipeService isn't used only in recipes module, so, the provider should be in app module.
