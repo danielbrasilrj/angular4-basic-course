@@ -5,8 +5,9 @@ import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
-  // loading lazily the recipe module
-  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' }
+  // loading lazily the recipe and shopping-list modules
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+  { path: 'shopping-list', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule' }
 ];
 
 @NgModule({
