@@ -11,6 +11,8 @@ import {CommonModule} from '@angular/common';
     CommonModule,
     DropdownDirective
   ]
+  //to avoid create child injector: NEVER PROVIDE SERVICES IN SHARED MODULES!
+  //                       (ESPECIALLY NOT IF YOU PLAN TO USE THEM IN LAZY LOADED MODULES!)
 })
 export class SharedModule {
 
