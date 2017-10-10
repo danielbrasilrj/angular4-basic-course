@@ -1,14 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SignupComponent} from './auth/signup/signup.component';
-import {SigninComponent} from './auth/signin/signin.component';
-import {PageNotFoundComponent} from './auth/page-not-found/page-not-found.component';
+
+import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-  { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'signin', component: SigninComponent }
+  { path: '', component: HomeComponent},
+  // loading lazily the recipe module
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' }
 ];
 
 @NgModule({

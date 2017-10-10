@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {ShoppingListComponent} from './shopping-list.component';
 import {ShoppingEditComponent} from './shopping-edit/shopping-edit.component';
-import {ShoppingRoutingModule} from './shopping-routing.module';
+import {ShoppingListRoutingModule} from './shopping-list-routing.module';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -14,9 +14,9 @@ import {FormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    ShoppingRoutingModule
+    ShoppingListRoutingModule
   ]
 })
-export class ShoppingModule {
+export class ShoppingListModule {
 
 }

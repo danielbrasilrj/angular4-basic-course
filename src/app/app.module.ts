@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
@@ -11,26 +10,27 @@ import {RecipeService} from './recipes/recipe.service';
 import {DataStorageService} from './shared/data-storage.service';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
-import {RecipesModule} from './recipes/recipes.module';
 import {SharedModule} from './shared/shared.module';
-import {ShoppingModule} from './shopping-list/shopping.module';
+import {ShoppingListModule} from './shopping-list/shopping-list.module';
 import {AuthModule} from './auth/auth.module';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
+  // all these imports are loaded eagerly (because this module is a bootstrap)
   imports: [
     // the browser module is only necessary in app module
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpModule,
     //feature modules
     AppRoutingModule,
-    RecipesModule,
-    ShoppingModule,
+    // remove import eagerly and apply lazy loading ..
+    //RecipesModule,
+    ShoppingListModule,
     AuthModule,
     SharedModule
   ],

@@ -13,6 +13,6 @@ const shoppingRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class ShoppingRoutingModule {
+export class ShoppingListRoutingModule {
 
 }
