@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
 import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import {AppRoutingModule} from './app-routing.module';
 import {RecipeService} from './recipes/recipe.service';
@@ -12,13 +11,11 @@ import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
 import {SharedModule} from './shared/shared.module';
 import {AuthModule} from './auth/auth.module';
-import {HomeComponent} from './home/home.component';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent
+    AppComponent
   ],
   // all these imports are loaded eagerly (because this module is a bootstrap)
   imports: [
@@ -32,7 +29,8 @@ import {HomeComponent} from './home/home.component';
     //ShoppingListModule,
 
     AuthModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   // the RecipeService isn't used only in recipes module, so, the provider should be in app module.
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
