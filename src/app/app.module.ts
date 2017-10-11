@@ -24,16 +24,17 @@ import {CoreModule} from './core/core.module';
     HttpModule,
     AppRoutingModule,
 
-    // remove imports eagerly and apply lazy loading modules ..
+    // remove imports eagerly and apply lazy loading modules
+    // (good practice, your client don't need to load all the features modules when load the app)
     //RecipesModule,
     //ShoppingListModule,
 
     AuthModule,
     SharedModule,
+    // The CoreModule should be define only here (is dangerous define in each feature module. This is more dangerous
+    // if the feature module is lazy loading (to understand this see video 272 and 276)
     CoreModule
   ],
-  // the RecipeService isn't used only in recipes module, so, the provider should be in app module.
-  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
