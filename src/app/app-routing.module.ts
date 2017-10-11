@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 import {HomeComponent} from './core/home/home.component';
 
@@ -12,7 +12,12 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    // The preloading configuration will load all the lazy loading modules after
+    // the user access the main page. This configurations continue loading in a
+    // different javascript file (in the browser's client) and when the lazy
+    // load modules to be access (with de URL), the lazy load module has been loaded,
+    // avoiding the user to wait a download to chuck.js
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })
