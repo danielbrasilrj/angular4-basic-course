@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -16,7 +16,7 @@ import {CoreModule} from './core/core.module';
   imports: [
     // the browser module is only necessary in app module
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
 
     // remove imports eagerly and apply lazy loading modules
